@@ -1,7 +1,7 @@
 from setuptools import find_packages
 from setuptools import setup
 
-REQUIRED_PACKAGES = ['pandas', 'keras']
+REQUIRED_PACKAGES = ['pandas', 'keras', 'oauth2client', 'googleapiclient', 'flask']
 
 setup(
     name='vitechtrainer',
