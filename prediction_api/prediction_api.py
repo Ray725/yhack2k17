@@ -1,6 +1,6 @@
 from flask import Flask, request, Response, jsonify
 from oauth2client.client import GoogleCredentials
-import googleapiclient
+from googleapiclient import discovery
 import json
 
 app = Flask(__name__)
@@ -16,9 +16,11 @@ def get_prediction():
     data = request.data
     if not data:
         return "NoData"
-    print(data)
+
     data_dict = json.loads(data)
-    print(data_dict["input"])
+    instance = [data_dict["employment"], data_dict["peopleCovered"], data_dict["annualIncome"], data_dict["employment"], 0 if data_dict["maritalSelection"][0] is "no" else 1, data_dict["height"], data_dict["weight"], 0 if data_dict["tobaccoSelection"][0] is "no" else 1, data_dict["highRiskCount"], data_dict["mediumRiskCount"], data_dict["lowRiskCount"], 0 if data_dict["genderAssignedAtBirthSelection"][0] is "male" else 1, data_dict["age"], data_dict["latitude"], data_dict["longitude"]]
+
+    print(predict_json("autoplan-187816", "pricesv2", {"input": instance}, "v2"))
     return "Success\n"
 
 
@@ -39,10 +41,9 @@ def predict_json(project, model, instances, version=None):
     """
     # Create the ML Engine service object.
     # To authenticate set the environment variable
-    # GOOGLE_APPLICATION_CREDENTIALS=<path_to_service_account_file>
-    credentials = GoogleCredentials.get_application_default()
+    GOOGLE_APPLICATION_CREDENTIALS="/Users/nahumgetachew/Downloads/credentials.json"
 
-    service = googleapiclient.discovery.build('ml', 'v1')
+    service = discovery.build('ml', 'v1')
     name = 'projects/{}/models/{}'.format(project, model)
 
     if version is not None:
