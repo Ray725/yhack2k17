@@ -18,9 +18,9 @@ from keras.models import load_model
 import pandas as pd
 
 people = pd.read_csv('./people.csv')
-x_train = people.ix[0:599,0:13].values.astype('int32')
+x_train = people.ix[0:599,0:14].values.astype('int32')
 y_train = people.ix[0:599,14:18].values.astype('int32')
-x_val = people.ix[599:999,0:13].values.astype('int32')
+x_val = people.ix[599:999,0:14].values.astype('int32')
 y_val = people.ix[599:999,14:18].values.astype('int32')
 
 def basic_model(x_size, y_size):
