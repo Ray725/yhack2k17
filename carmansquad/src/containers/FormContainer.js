@@ -142,6 +142,7 @@ class FormContainer extends Component {
 	handleClearForm(e) {
 		e.preventDefault();
 		this.setState({
+			ownerName: "",
 			lowRiskCount: 0,
       mediumRiskCount: 0,
       highRiskCount: 0,
@@ -167,6 +168,7 @@ class FormContainer extends Component {
       peopleCovered: this.state.peopleCovered,
       annualIncome: this.state.annualIncome,
       maritalSelection: this.state.maritalSelection,
+			employment: this.state.employmentSelection,
       height: this.state.height,
       weight: this.state.weight,
       tobaccoSelection: this.state.tobaccoSelection,
@@ -177,8 +179,17 @@ class FormContainer extends Component {
 		};
 
 		console.log('Send this in a POST request:', formPayload);
-    document.querySelector(".Plans").innerHTML = "Name: " + formPayload.ownerName
-    + " Age: " + formPayload.age + " Income: " + formPayload.annualIncome;
+		fetch('http://127.0.0.1:5000/get_prediction', {
+		  method: 'POST',
+			mode: 'no-cors',
+		  headers: {
+		    'Accept': 'application/json',
+		    'Content-Type': 'application/json',
+		  },
+		  body: JSON.stringify(formPayload)
+		}).then(function(res) {
+			document.querySelector(".Plans").innerHTML = res.text;
+		});
 		this.handleClearForm(e);
 	}
 	render() {
