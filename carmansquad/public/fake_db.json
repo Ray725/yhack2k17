@@ -1,6 +1,7 @@
 {
   "ownerName": "",
-  "employmentStatus": 0,
+  "employmentSelection": ["no"],
+  "employmentOptions": ["yes", "no"],
   "lowRiskCount": 0,
   "mediumRiskCount": 0,
   "highRiskCount": 0,

@@ -67,7 +67,9 @@ class FormContainer extends Component {
           genderAssignedAtBirthSelection: data.genderAssignedAtBirthSelection,
           age: data.age,
           longitude: data.longitude,
-          latitude: data.latitude
+          latitude: data.latitude,
+          employmentOptions: data.employmentOptions,
+          employmentSelection: data.employmentSelection
 				});
 			});
 	}
