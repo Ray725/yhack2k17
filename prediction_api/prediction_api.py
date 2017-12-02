@@ -1,22 +1,23 @@
-from flask import Flask, request
+from flask import Flask, request, Response, jsonify
 from oauth2client.client import GoogleCredentials
-from googleapiclient import discovery
+import googleapiclient
 import json
 
 app = Flask(__name__)
 
 
-@app.route ('/')
+@app.route('/')
 def hello_world():
     return 'Hello World!'
 
 
-@app.route('/get_prediction', methods=['POST'])
+@app.route('/get_prediction', methods=['POST', 'GET'])
 def get_prediction():
-    if request.method == 'POST':
-        data = request.data
-        data_dict = json.loads(data)
-        print(data_dict["input"])
+    data = request.data
+    print(data)
+    data_dict = json.loads(data)
+    print(data_dict["input"])
+    return "Success\n"
 
 
 def predict_json(project, model, instances, version=None):
@@ -37,19 +38,19 @@ def predict_json(project, model, instances, version=None):
     # Create the ML Engine service object.
     # To authenticate set the environment variable
     # GOOGLE_APPLICATION_CREDENTIALS=<path_to_service_account_file>
-    service = googleapiclient.discovery.build ('ml', 'v1')
-    name = 'projects/{}/models/{}'.format (project, model)
+    service = googleapiclient.discovery.build('ml', 'v1')
+    name = 'projects/{}/models/{}'.format(project, model)
 
     if version is not None:
-        name += '/versions/{}'.format (version)
+        name += '/versions/{}'.format(version)
 
-    response = service.projects ().predict (
+    response = service.projects().predict(
         name=name,
         body={'instances': instances}
     ).execute ()
 
     if 'error' in response:
-        raise RuntimeError (response['error'])
+        raise RuntimeError(response['error'])
 
     return response['predictions']
 

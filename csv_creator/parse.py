@@ -29,7 +29,8 @@ counter = 0
 print("Assembling dictionaries...")
 
 for person in participant_detail_json:
-    print("Row {} of {}".format(counter, len(participant_detail_json)))
+    if counter % 1000 == 0:
+        print("Row {} of {}".format(counter, len(participant_detail_json)))
     counter += 1
     person_dict = dict()
     person_dict["employed"] = 0 if person.get("EMPLOYMENT_STATUS") is "Unemployed" else 1
