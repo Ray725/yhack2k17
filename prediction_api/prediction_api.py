@@ -14,6 +14,8 @@ def hello_world():
 @app.route('/get_prediction', methods=['POST', 'GET'])
 def get_prediction():
     data = request.data
+    if not data:
+        return "NoData"
     print(data)
     data_dict = json.loads(data)
     print(data_dict["input"])
@@ -38,6 +40,8 @@ def predict_json(project, model, instances, version=None):
     # Create the ML Engine service object.
     # To authenticate set the environment variable
     # GOOGLE_APPLICATION_CREDENTIALS=<path_to_service_account_file>
+    credentials = GoogleCredentials.get_application_default()
+
     service = googleapiclient.discovery.build('ml', 'v1')
     name = 'projects/{}/models/{}'.format(project, model)
 
