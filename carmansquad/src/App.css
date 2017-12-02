@@ -20,6 +20,8 @@
 
 .App-intro {
   font-size: large;
+  color: blue;
+  font-weight: bold;
 }
 
 @keyframes App-logo-spin {
@@ -27,6 +29,19 @@
   to { transform: rotate(360deg); }
 }
 
-SearchButton {
-  font-size: large;
+.searchButton {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.Plans {
+  padding: 30px;
+  border: solid;
 }

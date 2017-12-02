@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import SearchButton from './components/SearchButton.js';
+import SearchButton from './components/SearchButton';
+import FormContainer from './containers/FormContainer';
 import './App.css';
 
 class App extends Component {
@@ -12,13 +13,13 @@ class App extends Component {
           <h1 className="App-title">AutoPlan</h1>
         </header>
         <p className="App-intro">
-          Input your information, and we will show your personal
-          predicted cost of each insurance plan!
+          Input your information for predicted insurance costs!
         </p>
+        <FormContainer />
+        <SearchButton />
         <div className="Plans">
           This is where your plan prices will show up!
         </div>
-        <SearchButton />
       </div>
     );
   }

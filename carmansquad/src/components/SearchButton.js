@@ -24,7 +24,7 @@ export default class SearchButton extends Component {
 
   render() {
     return (
-      <button onClick={this.handleClick}>
+      <button className="searchButton" onClick={this.handleClick}>
         {this.state.buttonText}
       </button>
     );
