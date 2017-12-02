@@ -9,15 +9,6 @@ class FormContainer extends Component {
 		super(props);
 		this.state = {
 			ownerName: '',
-			petSelections: [],
-			selectedPets: [],
-			ageOptions: [],
-			ownerAgeRangeSelection: '',
-			siblingOptions: [],
-			siblingSelection: [],
-			currentPetCount: 0,
-			description: '',
-      // this is where the real app data is held
       employmentSelection: [],
       employmentOptions: [],
       lowRiskCount: 0,
@@ -37,15 +28,9 @@ class FormContainer extends Component {
       latitude: 0,
       longitude: 0
 		};
+    this.handleFullNameChange = this.handleFullNameChange.bind(this);
 		this.handleFormSubmit = this.handleFormSubmit.bind(this);
 		this.handleClearForm = this.handleClearForm.bind(this);
-		this.handleFullNameChange = this.handleFullNameChange.bind(this);
-		this.handleCurrentPetCountChange = this.handleCurrentPetCountChange.bind(this);
-		this.handleAgeRangeSelect = this.handleAgeRangeSelect.bind(this);
-		this.handlePetSelection = this.handlePetSelection.bind(this);
-		this.handleSiblingsSelection = this.handleSiblingsSelection.bind(this);
-		this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
-    // this is real app stuff
     this.handleEmploymentSelection = this.handleEmploymentSelection.bind(this);
     this.handleLowRiskChange = this.handleLowRiskChange.bind(this);
     this.handleMediumRiskChange = this.handleMediumRiskChange.bind(this);
@@ -67,16 +52,6 @@ class FormContainer extends Component {
 			.then(data => {
 				this.setState({
 					ownerName: data.ownerName,
-					petSelections: data.petSelections,
-					selectedPets: data.selectedPets,
-					ageOptions: data.ageOptions,
-					ownerAgeRangeSelection: data.ownerAgeRangeSelection,
-					siblingOptions: data.siblingOptions,
-          employmentOptions: data.employmentOptions,
-          employmentSelection: data.employmentSelection,
-					siblingSelection: data.siblingSelection,
-					currentPetCount: data.currentPetCount,
-					description: data.description,
           lowRiskCount: data.lowRiskCount,
           mediumRiskCount: data.mediumRiskCount,
           highRiskCount: data.highRiskCount,
@@ -117,9 +92,6 @@ class FormContainer extends Component {
   handleHeightChange(e) {
 		this.setState({ height: e.target.value }, () => console.log('height', this.state.height));
 	}
-  handleCurrentPetCountChange(e) {
-		this.setState({ currentPetCount: e.target.value }, () => console.log('pet count', this.state.currentPetCount));
-	}
   handleWeightChange(e) {
 		this.setState({ weight: e.target.value }, () => console.log('weight', this.state.weight));
 	}
@@ -132,9 +104,7 @@ class FormContainer extends Component {
   handleLatitudeChange(e) {
 		this.setState({ latitude: e.target.value }, () => console.log('latitude', this.state.latitude));
 	}
-	handleAgeRangeSelect(e) {
-		this.setState({ ownerAgeRangeSelection: e.target.value }, () => console.log('age range', this.state.ownerAgeRangeSelection));
-	}
+  /*
 	handlePetSelection(e) {
 		const newSelection = e.target.value;
 		let newSelectionArray;
@@ -145,9 +115,7 @@ class FormContainer extends Component {
 		}
 		this.setState({ selectedPets: newSelectionArray }, () => console.log('pet selection', this.state.selectedPets));
 	}
-	handleSiblingsSelection(e) {
-		this.setState({ siblingSelection: [e.target.value] }, () => console.log('siblingz', this.state.siblingSelection));
-	}
+  */
   handleEmploymentSelection(e) {
 		this.setState({ employmentSelection: [e.target.value] }, () => console.log('employment', this.state.employmentSelection));
 	}
@@ -160,6 +128,7 @@ class FormContainer extends Component {
   handleGenderSelection(e) {
 		this.setState({ genderAssignedAtBirthSelection: [e.target.value] }, () => console.log('gender assigned at birth', this.state.genderAssignedAtBirthSelection));
 	}
+  /*
 	handleDescriptionChange(e) {
 		// const textArray = e.target.value.split('').filter(x => x !== 'e');
 		// console.log('string split into array of letters',textArray);
@@ -167,6 +136,7 @@ class FormContainer extends Component {
 		// this.setState({ description: filteredText }, () => console.log('description', this.state.description));
 		this.setState({ description: e.target.value }, () => console.log('description', this.state.description));
 	}
+  */
 	handleClearForm(e) {
 		e.preventDefault();
 		this.setState({
@@ -182,16 +152,25 @@ class FormContainer extends Component {
 		e.preventDefault();
 
 		const formPayload = {
-			ownerName: this.state.ownerName,
-			selectedPets: this.state.selectedPets,
-			ownerAgeRangeSelection: this.state.ownerAgeRangeSelection,
-			siblingSelection: this.state.siblingSelection,
-			currentPetCount: this.state.currentPetCount,
-			description: this.state.description
+      ownerName: this.state.ownerName,
+      lowRiskCount: this.state.lowRiskCount,
+      mediumRiskCount: this.state.mediumRiskCount,
+      highRiskCount: this.state.highRiskCount,
+      peopleCovered: this.state.peopleCovered,
+      annualIncome: this.state.annualIncome,
+      maritalSelection: this.state.maritalSelection,
+      height: this.state.height,
+      weight: this.state.weight,
+      tobaccoSelection: this.state.tobaccoSelection,
+      genderAssignedAtBirthSelection: this.state.genderAssignedAtBirthSelection,
+      age: this.state.age,
+      longitude: this.state.longitude,
+      latitude: this.state.latitude
 		};
 
 		console.log('Send this in a POST request:', formPayload);
-    document.querySelector(".Plans").innerHTML = formPayload;
+    document.querySelector(".Plans").innerHTML = "Name: " + formPayload.ownerName
+    + " Age: " + formPayload.age + " Income: " + formPayload.annualIncome;
 		this.handleClearForm(e);
 	}
 	render() {
