@@ -97,12 +97,12 @@ class FormContainer extends Component {
 		};
 
 		console.log('Send this in a POST request:', formPayload);
+    document.querySelector(".Plans").innerHTML = formPayload;
 		this.handleClearForm(e);
 	}
 	render() {
 		return (
 			<form className="container" onSubmit={this.handleFormSubmit}>
-				<h5>Pet Adoption Form</h5>
 				<SingleInput
 					inputType={'text'}
 					title={'Full name'}

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import SearchButton from './components/SearchButton';
 import FormContainer from './containers/FormContainer';
+import './spectre.min.css';
+import './styles.css';
 import './App.css';
 
 class App extends Component {
@@ -15,10 +17,21 @@ class App extends Component {
         <p className="App-intro">
           Input your information for predicted insurance costs!
         </p>
-        <FormContainer />
-        <SearchButton />
-        <div className="Plans">
-          This is where your plan prices will show up!
+        <div className="container">
+          <div className="columns">
+            <div className="col-md-9 centered">
+              <FormContainer />
+            </div>
+          </div>
+        </div>
+        <div className="container">
+          <div className="columns">
+            <div className="col-md-9 centered">
+              <div className="Plans">
+                This is where your plan prices will show up!
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );

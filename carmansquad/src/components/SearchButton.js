@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 export default class SearchButton extends Component {
   constructor(props){
     super(props);
-    this.state = {buttonText: "Click me!"};
+    this.state = {buttonText: "Query API!"};
     this.handleClick = this.handleClick.bind(this);
   }
 
