@@ -16,7 +16,7 @@ from keras.utils import plot_model
 from keras.models import load_model
 import pandas as pd
 
-people = pd.read_csv('./people.csv')
+people = pd.read_csv('./googlepackage/people.csv')
 x_train = people.ix[0:599,0:13].values.astype('int32')
 y_train = people.ix[0:599,14:18].values.astype('int32')
 x_val = people.ix[599:999,0:13].values.astype('int32')
@@ -87,3 +87,29 @@ def plot_hist(h, xsize=6, ysize=10):
     return
 
 plot_hist(history.history, xsize=8, ysize=12)
+
+model_builder = tf.saved_model.builder.SavedModelBuilder("exported_model")
+
+inputs = {
+    'input': tf.saved_model.utils.build_tensor_info(model.input)
+}
+
+outputs = {
+    'output': tf.saved_model.utils.build_tensor_info(model.output)
+}
+
+signature_def = tf.saved_model.signature_def_utils.build_signature_def(
+    inputs=inputs,
+    outputs=outputs,
+    method_name=tf.saved_model.signature_constants.PREDICT_METHOD_NAME
+)
+
+model_builder.add_meta_graph_and_variables(
+    K.get_session(),
+    tags=[tf.saved_model.tag_constants.SERVING],
+    signature_def_map={
+        tf.saved_model.signature_constants.DEFAULT_SERVING_SIGNATURE_DEF_KEY: signature_def
+    }
+)
+
+model_builder.save()
