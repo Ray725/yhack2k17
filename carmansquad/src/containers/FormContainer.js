@@ -16,7 +16,21 @@ class FormContainer extends Component {
 			siblingOptions: [],
 			siblingSelection: [],
 			currentPetCount: 0,
-			description: ''
+			description: '',
+      // this is where the real app data is held
+      employmentSelection: [],
+      employmentOptions: [],
+      lowRisk: 0,
+      medRisk: 0,
+      highRisk: 0,
+      peopleCovered: 0,
+      annualIncome: 0,
+      maritalStatus: 0,
+      height: 0,
+      weight: 0,
+      tobacco: 0,
+      sex: 0,
+      age: 0
 		};
 		this.handleFormSubmit = this.handleFormSubmit.bind(this);
 		this.handleClearForm = this.handleClearForm.bind(this);
@@ -26,6 +40,8 @@ class FormContainer extends Component {
 		this.handlePetSelection = this.handlePetSelection.bind(this);
 		this.handleSiblingsSelection = this.handleSiblingsSelection.bind(this);
 		this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+    // this is real app stuff
+    this.handleEmploymentSelection = this.handleEmploymentSelection.bind(this);
 	}
 	componentDidMount() {
 		fetch('./fake_db.json')
@@ -38,6 +54,8 @@ class FormContainer extends Component {
 					ageOptions: data.ageOptions,
 					ownerAgeRangeSelection: data.ownerAgeRangeSelection,
 					siblingOptions: data.siblingOptions,
+          employmentOptions: data.employmentOptions,
+          employmentSelection: data.employmentSelection,
 					siblingSelection: data.siblingSelection,
 					currentPetCount: data.currentPetCount,
 					description: data.description
@@ -65,6 +83,9 @@ class FormContainer extends Component {
 	}
 	handleSiblingsSelection(e) {
 		this.setState({ siblingSelection: [e.target.value] }, () => console.log('siblingz', this.state.siblingSelection));
+	}
+  handleEmploymentSelection(e) {
+		this.setState({ employmentSelection: [e.target.value] }, () => console.log('employment', this.state.employmentSelection));
 	}
 	handleDescriptionChange(e) {
 		// const textArray = e.target.value.split('').filter(x => x !== 'e');
@@ -105,11 +126,95 @@ class FormContainer extends Component {
 			<form className="container" onSubmit={this.handleFormSubmit}>
 				<SingleInput
 					inputType={'text'}
-					title={'Full name'}
+					title={'Fill out this form!'}
 					name={'name'}
 					controlFunc={this.handleFullNameChange}
 					content={this.state.ownerName}
 					placeholder={'Type first and last name here'} />
+        <CheckboxOrRadioGroup
+					title={'Are you employed?'}
+					setName={'employed'}
+					controlFunc={this.handleEmploymentSelection}
+					type={'radio'}
+					options={this.state.employmentOptions}
+					selectedOptions={this.state.employmentSelection} />
+        <SingleInput
+					inputType={'number'}
+					title={'How many low-risk preconditions do you have?'}
+					name={'currentPetCount'}
+					controlFunc={this.handleCurrentPetCountChange}
+					content={this.state.currentPetCount}
+					placeholder={'Enter number of current pets'} />
+        <SingleInput
+					inputType={'number'}
+					title={'How many medium-risk preconditions do you have?'}
+					name={'currentPetCount'}
+					controlFunc={this.handleCurrentPetCountChange}
+					content={this.state.currentPetCount}
+					placeholder={'Enter number of current pets'} />
+        <SingleInput
+					inputType={'number'}
+					title={'How many high-risk preconditions do you have?'}
+					name={'currentPetCount'}
+					controlFunc={this.handleCurrentPetCountChange}
+					content={this.state.currentPetCount}
+					placeholder={'Enter number of current pets'} />
+        <SingleInput
+					inputType={'number'}
+					title={'How many people would you like to cover?'}
+					name={'currentPetCount'}
+					controlFunc={this.handleCurrentPetCountChange}
+					content={this.state.currentPetCount}
+					placeholder={'Enter number of current pets'} />
+        <SingleInput
+					inputType={'number'}
+					title={'What is your annual income?'}
+					name={'currentPetCount'}
+					controlFunc={this.handleCurrentPetCountChange}
+					content={this.state.currentPetCount}
+					placeholder={'Enter number of current pets'} />
+        <CheckboxOrRadioGroup
+					title={'Are you married?'}
+					setName={'siblings'}
+					controlFunc={this.handleSiblingsSelection}
+					type={'radio'}
+					options={this.state.siblingOptions}
+					selectedOptions={this.state.siblingSelection} />
+        <SingleInput
+					inputType={'number'}
+					title={'What is your height in inches?'}
+					name={'currentPetCount'}
+					controlFunc={this.handleCurrentPetCountChange}
+					content={this.state.currentPetCount}
+					placeholder={'Enter number of current pets'} />
+        <SingleInput
+					inputType={'number'}
+					title={'What is your weight in pounds?'}
+					name={'currentPetCount'}
+					controlFunc={this.handleCurrentPetCountChange}
+					content={this.state.currentPetCount}
+					placeholder={'Enter number of current pets'} />
+        <CheckboxOrRadioGroup
+					title={'Do you smoke tobacco?'}
+					setName={'siblings'}
+					controlFunc={this.handleSiblingsSelection}
+					type={'radio'}
+					options={this.state.siblingOptions}
+					selectedOptions={this.state.siblingSelection} />
+        <CheckboxOrRadioGroup
+					title={'What is your gender?'}
+					setName={'siblings'}
+					controlFunc={this.handleSiblingsSelection}
+					type={'radio'}
+					options={this.state.siblingOptions}
+					selectedOptions={this.state.siblingSelection} />
+        <SingleInput
+					inputType={'number'}
+					title={'What is your age?'}
+					name={'currentPetCount'}
+					controlFunc={this.handleCurrentPetCountChange}
+					content={this.state.currentPetCount}
+					placeholder={'Enter number of current pets'} />
 				<Select
 					name={'ageRange'}
 					placeholder={'Choose your age range'}
