@@ -4,10 +4,10 @@ from setuptools import setup
 REQUIRED_PACKAGES = ['pandas', 'keras']
 
 setup(
-    name='trainer',
+    name='vitechtrainer',
     version='0.1',
     install_requires=REQUIRED_PACKAGES,
     packages=find_packages(),
     include_package_data=True,
-    description='My trainer application package.'
+    description='ViTech machine learning trainer package.'
 )
