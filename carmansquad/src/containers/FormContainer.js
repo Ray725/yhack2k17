@@ -183,13 +183,18 @@ class FormContainer extends Component {
 		  method: 'POST',
 			mode: 'no-cors',
 		  headers: {
-		    'Accept': 'application/json',
+		    'Accept': 'application/json, text/plain, */*',
 		    'Content-Type': 'application/json',
 		  },
 		  body: JSON.stringify(formPayload)
 		}).then(function(res) {
-			document.querySelector(".Plans").innerHTML = res;
+			console.log(res);
+			document.querySelector(".Plans").innerHTML = JSON.stringify(formPayload);
+			return res.json;
+		}).catch(function(res) {
+			console.log(res);
 		});
+
 		this.handleClearForm(e);
 	}
 	render() {

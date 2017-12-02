@@ -13,11 +13,12 @@ def hello_world():
 
 @app.route('/get_prediction', methods=['POST', 'GET'])
 def get_prediction():
-    data = request.data
-    if not data:
-        return "NoData"
+    # d = request.data
+    data_dict = json.dumps(json.loads(request.data))
 
-    data_dict = json.loads(data)
+    if not data_dict:
+        return "NoData"
+    print(data_dict)
     instance = [0 if data_dict["employment"][0] is "no" else 1, int(data_dict["peopleCovered"]), int(data_dict["annualIncome"]), 0 if data_dict["maritalSelection"][0] is "no" else 1, int(data_dict["height"]), int(data_dict["weight"]), 0 if data_dict["tobaccoSelection"][0] is "no" else 1, int(data_dict["highRiskCount"]), int(data_dict["mediumRiskCount"]), int(data_dict["lowRiskCount"]), 0 if data_dict["genderAssignedAtBirthSelection"][0] is "male" else 1, int(data_dict["age"]), int(data_dict["latitude"]), int(data_dict["longitude"])]
 
     return predict_json("autoplan-187816", "pricesv2", {"input": instance}, "v2")
