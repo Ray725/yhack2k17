@@ -3,8 +3,9 @@ import os
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-
+import tensorflow as tf
 import keras
+from keras import backend as K
 from keras import metrics
 from keras import regularizers
 from keras.models import Sequential
@@ -16,7 +17,7 @@ from keras.utils import plot_model
 from keras.models import load_model
 import pandas as pd
 
-people = pd.read_csv('./googlepackage/people.csv')
+people = pd.read_csv('./people.csv')
 x_train = people.ix[0:599,0:13].values.astype('int32')
 y_train = people.ix[0:599,14:18].values.astype('int32')
 x_val = people.ix[599:999,0:13].values.astype('int32')
