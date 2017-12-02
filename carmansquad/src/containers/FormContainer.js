@@ -142,19 +142,25 @@ class FormContainer extends Component {
 	handleClearForm(e) {
 		e.preventDefault();
 		this.setState({
-			ownerName: '',
-			selectedPets: [],
-			ownerAgeRangeSelection: '',
-			siblingSelection: [],
-			currentPetCount: 0,
-			description: ''
+			lowRiskCount: 0,
+      mediumRiskCount: 0,
+      highRiskCount: 0,
+      peopleCovered: 0,
+      annualIncome: 0,
+      maritalSelection: ["no"],
+      height: 0,
+      weight: 0,
+      tobaccoSelection: ["no"],
+      genderAssignedAtBirthSelection: ["female"],
+      age: 0,
+      longitude: 0,
+      latitude: 0
 		});
 	}
 	handleFormSubmit(e) {
 		e.preventDefault();
 
 		const formPayload = {
-      ownerName: this.state.ownerName,
       lowRiskCount: this.state.lowRiskCount,
       mediumRiskCount: this.state.mediumRiskCount,
       highRiskCount: this.state.highRiskCount,
@@ -287,9 +293,6 @@ class FormContainer extends Component {
 					type="submit"
 					className="btn btn-primary float-right"
 					value="Submit"/>
-				<button
-					className="btn btn-link float-left"
-					onClick={this.handleClearForm}>Clear form</button>
 			</form>
 		);
 	}
