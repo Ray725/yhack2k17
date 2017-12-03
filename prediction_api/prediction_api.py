@@ -1,9 +1,10 @@
-from flask import Flask, request, Response, jsonify
-from oauth2client.client import GoogleCredentials
+from flask import Flask, request, jsonify
 from googleapiclient import discovery
+from flask_cors import CORS
 import json
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route('/get_prediction', methods=['POST', 'GET'])

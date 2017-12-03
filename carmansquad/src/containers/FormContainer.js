@@ -181,7 +181,7 @@ class FormContainer extends Component {
 		console.log('Send this in a POST request:', formPayload);
 		fetch('http://127.0.0.1:5000/get_prediction', {
 		  method: 'POST',
-			mode: 'no-cors',
+			mode: 'cors',
 		  headers: {
 		    'Accept': 'application/json, text/plain, */*',
 		    'Content-Type': 'application/json',
