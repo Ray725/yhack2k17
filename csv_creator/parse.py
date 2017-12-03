@@ -45,14 +45,6 @@ for total_person in final:
 
     person_dict = {}
 
-    # participant
-    participant = total_person[0]
-    print(participant)
-    person_dict["sex"] = 0 if participant.get("sex") is "M" else 1
-    person_dict["age"] = relativedelta.relativedelta(pytz.utc.localize(datetime.today()), parser.parse(participant["DOB"])).years
-    person_dict["latitude"] = participant.get("latitude")
-    person_dict["longitude"] = participant.get("longitude")
-
     # participant_detail
     participant_detail = total_person[1]
     person_dict["employed"] = 0 if participant_detail.get("EMPLOYMENT_STATUS") is "Unemployed" else 1
@@ -72,6 +64,13 @@ for total_person in final:
         person_dict["mediumRisk"] = 0
         person_dict["lowRisk"] = 0
     person_dict["coverage"] = participant_detail.get("OPTIONAL_INSURED") - 500000
+
+    # participant
+    participant = total_person[0]
+    person_dict["sex"] = 0 if participant.get("sex") is "M" else 1
+    person_dict["age"] = relativedelta.relativedelta(pytz.utc.localize(datetime.today()), parser.parse(participant["DOB"])).years
+    person_dict["latitude"] = participant.get("latitude")
+    person_dict["longitude"] = participant.get("longitude")
 
     # quotes
     quote = total_person[2]
