@@ -12,7 +12,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">AutoPlan</h1>
+          <h1 className="App-title">ViQuote</h1>
         </header>
         <p className="App-intro">
           Input your information for predicted insurance costs!
