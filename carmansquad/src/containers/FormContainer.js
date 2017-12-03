@@ -203,6 +203,18 @@ class FormContainer extends Component {
 		}).then(function(data) {
 			console.log(data);
 			var info = data[0]['output'];
+			if(info[0] < 20) {
+				info[0] = 20;
+			}
+			if(info[1] < 40) {
+				info[1] = 40;
+			}
+			if(info[2] < 70) {
+				info[2] = 70;
+			}
+			if(info[3] < 110) {
+				info[3] = 110;
+			}
 			document.querySelector("#bronze").innerHTML = `<h1>Bronze</h1><h1 class="result">$${info[0].toFixed(2)} </h1>`;
 			document.querySelector("#silver").innerHTML = `<h1>Silver</h1><h1 class="result">$${info[1].toFixed(2)}</h1>`;
 			document.querySelector("#gold").innerHTML = `<h1>Gold</h1><h1 class="result">$${info[2].toFixed(2)}</h1>`;
