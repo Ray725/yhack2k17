@@ -26,7 +26,8 @@ class FormContainer extends Component {
       genderAssignedAtBirthSelection: [],
       age: 0,
       latitude: 0,
-      longitude: 0
+      longitude: 0,
+			coverage: 0
 		};
     this.handleFullNameChange = this.handleFullNameChange.bind(this);
 		this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -45,6 +46,7 @@ class FormContainer extends Component {
     this.handleAgeChange = this.handleAgeChange.bind(this);
     this.handleLongitudeChange = this.handleLongitudeChange.bind(this);
     this.handleLatitudeChange = this.handleLatitudeChange.bind(this);
+		this.handleCoverageChange = this.handleCoverageChange.bind(this);
 	}
 	componentDidMount() {
 		fetch('./fake_db.json')
@@ -69,7 +71,8 @@ class FormContainer extends Component {
           longitude: data.longitude,
           latitude: data.latitude,
           employmentOptions: data.employmentOptions,
-          employmentSelection: data.employmentSelection
+          employmentSelection: data.employmentSelection,
+					coverage: data.coverage
 				});
 			});
 	}
@@ -105,6 +108,9 @@ class FormContainer extends Component {
 	}
   handleLatitudeChange(e) {
 		this.setState({ latitude: e.target.value }, () => console.log('latitude', this.state.latitude));
+	}
+	handleCoverageChange(e) {
+		this.setState({ coverage: e.target.value }, () => console.log('coverage', this.state.coverage));
 	}
   /*
 	handlePetSelection(e) {
@@ -155,7 +161,8 @@ class FormContainer extends Component {
       genderAssignedAtBirthSelection: ["female"],
       age: 0,
       longitude: 0,
-      latitude: 0
+      latitude: 0,
+			coverage: 0
 		});
 	}
 	handleFormSubmit(e) {
@@ -175,7 +182,8 @@ class FormContainer extends Component {
       genderAssignedAtBirthSelection: this.state.genderAssignedAtBirthSelection,
       age: this.state.age,
       longitude: this.state.longitude,
-      latitude: this.state.latitude
+      latitude: this.state.latitude,
+			coverage: this.state.coverage
 		};
 
 		console.log('Send this in a POST request:', formPayload);
@@ -312,6 +320,13 @@ class FormContainer extends Component {
 					controlFunc={this.handleLongitudeChange}
 					content={this.state.longitude}
 					placeholder={'Enter your longitude'} />
+				<SingleInput
+					inputType={'number'}
+					title={'How much additional coverage over $500,000 would you like to be insured?'}
+					name={'coverage'}
+					controlFunc={this.handleCoverageChange}
+					content={this.state.coverage}
+					placeholder={'Enter your desired additional coverage'} />
 				<input
 					type="submit"
 					className="btn btn-primary float-right"
