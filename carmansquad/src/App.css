@@ -55,13 +55,16 @@ body{
 }
 
 #plans {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   background-color: rgba(255,255,255,0.96);
   width: calc(300px + 20vw);
   text-align: center;
   border-radius: 20px;
   padding: 10px;
+  padding-top: 20px;
   margin: 0 auto;
-  margin-top: 110px;
+  margin-top: 140px;
+  text-align: center;
 }
 
 #levels {
@@ -80,6 +83,7 @@ body{
   border-radius: 20px 0 0 0;
   padding: 5px;
   overflow: auto;
+  height: 270px;
 }
 #silver {
   background-color: #C0C0C0;
@@ -88,6 +92,7 @@ body{
   border-radius: 0 20px 0 0;
   padding: 5px;
   overflow: auto;
+  height: 270px;
 }
 #gold {
   background-color: #FFD700;
@@ -97,6 +102,7 @@ body{
   border-radius: 0 0 0 20px;
   padding: 5px;
   overflow: auto;
+  height: 270px;
 }
 #platinum {
   background-color: #e5e4e2;
@@ -105,6 +111,7 @@ body{
   border-radius: 0 0 20px 0;
   padding: 5px;
   overflow: auto;
+  height: 270px;
 }
 
 h1 {
@@ -138,6 +145,6 @@ p {
 }
 
 .infoButton {
-  font-size: 25px;
+  font-size: calc(100% + 0.5vw);
   color: black;
 }
