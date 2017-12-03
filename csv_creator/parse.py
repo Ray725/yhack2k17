@@ -71,6 +71,7 @@ for total_person in final:
         person_dict["highRisk"] = 0
         person_dict["mediumRisk"] = 0
         person_dict["lowRisk"] = 0
+    person_dict["coverage"] = participant_detail.get("OPTIONAL_INSURED")
 
     # quotes
     quote = total_person[2]
@@ -83,7 +84,7 @@ for total_person in final:
 
 # Create CSV
 keys = people[0].keys()
-with open('people4.csv', 'w') as output_file:
+with open('people.csv', 'w') as output_file:
     dict_writer = csv.DictWriter(output_file, keys)
     dict_writer.writeheader()
     dict_writer.writerows(people)
