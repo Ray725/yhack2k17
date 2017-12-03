@@ -203,10 +203,10 @@ class FormContainer extends Component {
 		}).then(function(data) {
 			console.log(data);
 			var info = data[0]['output'];
-			document.querySelector("#bronze").innerHTML = "$" + info[0].toFixed(2);
-			document.querySelector("#silver").innerHTML = "$" + info[1].toFixed(2);
-			document.querySelector("#gold").innerHTML = "$" + info[2].toFixed(2);
-			document.querySelector("#platinum").innerHTML = "$" + info[3].toFixed(2);
+			document.querySelector("#bronze").innerHTML = `<h1>$${info[0].toFixed(2)}</h1>`;
+			document.querySelector("#silver").innerHTML = `<h1>$${info[1].toFixed(2)}</h1>`;
+			document.querySelector("#gold").innerHTML = `<h1>$${info[2].toFixed(2)}</h1>`;
+			document.querySelector("#platinum").innerHTML = `<h1>$${info[3].toFixed(2)}</h1>`;
 			document.querySelector(".infoButton").text = "Finished! Click me to view your results!";
 		});
 
