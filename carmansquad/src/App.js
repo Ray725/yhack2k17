@@ -27,9 +27,9 @@ class App extends Component {
         <div className="container">
           <div className="columns">
             <div className="col-md-9 centered">
-              <div className="Plans">
-                This is where your plan prices will show up!
-              </div>
+              <a href="#" className="infoButton">
+                Made by Rounak Bera, Nahum Getachew, Raymond Li.
+              </a>
             </div>
           </div>
         </div>
