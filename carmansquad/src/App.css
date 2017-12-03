@@ -1,7 +1,14 @@
+body{
+  background: url(./bg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 .App {
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   text-align: center;
-  margin-top: 150px;
   z-index: -1;
   font-size:calc(85% + 0.5vw);
   color: black;
@@ -38,36 +45,38 @@
 
 .App-intro {
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-  font-size: large;
-  color: blue;
+  font-size: calc(100% + 0.65vw);
+  color: purple;
   font-weight: bold;
   padding: 10px;
   text-align: center;
+  margin-top: 150px;
 }
 
 #plans {
-  background-color: skyblue;
-  width: calc(80% + -10vw);
+  background-color: rgba(255,255,255,0.96);
+  width: calc(300px + 20vw);
   text-align: center;
-  border-radius: 10px;
+  border-radius: 20px;
   padding: 10px;
   margin: 0 auto;
   margin-top: 110px;
 }
 
 #levels {
-  margin-top: 30px;
+  margin-top: 40px;
   text-align: center;
-  height: 200px;
-  margin-bottom: 250px;
+  height: 380px;
+  width: 100%;
+  margin-bottom: 50px;
+  vertical-align:center
 }
-
 #bronze {
   background-color: #CD7F32;
   width: 45%;
   float: left;
   margin-left: 5%;
-  border-radius: 10px;
+  border-radius: 20px 0 0 0;
   padding: 5px;
   overflow: auto;
 }
@@ -75,7 +84,7 @@
   background-color: #C0C0C0;
   width: 45%;
   float: left;
-  border-radius: 10px;
+  border-radius: 0 20px 0 0;
   padding: 5px;
   overflow: auto;
 }
@@ -84,7 +93,7 @@
   margin-left: 5%;
   width: 45%;
   float: left;
-  border-radius: 10px;
+  border-radius: 0 0 0 20px;
   padding: 5px;
   overflow: auto;
 }
@@ -92,7 +101,7 @@
   background-color: #e5e4e2;
   width: 45%;
   float: left;
-  border-radius: 10px;
+  border-radius: 0 0 20px 0;
   padding: 5px;
   overflow: auto;
 }
@@ -119,7 +128,6 @@ p {
 .searchButton {
   background-color: #4CAF50; /* Green */
   border: none;
-  color: white;
   padding: 30px;
   text-align: center;
   text-decoration: none;
