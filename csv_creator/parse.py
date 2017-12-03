@@ -71,7 +71,7 @@ for total_person in final:
         person_dict["highRisk"] = 0
         person_dict["mediumRisk"] = 0
         person_dict["lowRisk"] = 0
-    person_dict["coverage"] = participant_detail.get("OPTIONAL_INSURED")
+    person_dict["coverage"] = participant_detail.get("OPTIONAL_INSURED") - 500000
 
     # quotes
     quote = total_person[2]
