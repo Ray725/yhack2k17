@@ -320,6 +320,7 @@ class FormContainer extends Component {
 					controlFunc={this.handleLongitudeChange}
 					content={this.state.longitude}
 					placeholder={'Enter your longitude'} />
+
 				<SingleInput
 					inputType={'number'}
 					title={'How much additional coverage over $500,000 would you like to be insured?'}

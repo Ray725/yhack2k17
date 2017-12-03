@@ -17,11 +17,11 @@ from keras.utils import plot_model
 from keras.models import load_model
 import pandas as pd
 
-people = pd.read_csv('./people.csv')
-x_train = people.ix[0:599,0:14].values.astype('int32')
-y_train = people.ix[0:599,14:18].values.astype('int32')
-x_val = people.ix[599:999,0:14].values.astype('int32')
-y_val = people.ix[599:999,14:18].values.astype('int32')
+people = pd.read_csv('../csv_creator/people.csv')
+x_train = people.ix[0:79381,0:15].values.astype('int32')
+y_train = people.ix[0:79381,15:19].values.astype('int32')
+x_val = people.ix[79381:132301,0:15].values.astype('int32')
+y_val = people.ix[79381:132301,15:19].values.astype('int32')
 
 def basic_model(x_size, y_size):
     t_model = Sequential()
@@ -44,7 +44,7 @@ keras_callbacks = [
 ]
 
 history = model.fit(x_train, y_train,
-    batch_size=32,
+    batch_size=200,
     epochs=20,
     shuffle=True,
     verbose=2, # Change it to 2, if wished to observe execution
