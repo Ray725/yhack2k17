@@ -84,6 +84,7 @@ body{
   padding: 5px;
   overflow: auto;
   height: 300px;
+  position: relative;
 }
 #silver {
   background-color: #C0C0C0;
@@ -93,6 +94,7 @@ body{
   padding: 5px;
   overflow: auto;
   height: 300px;
+  position: relative;
 }
 #gold {
   background-color: #FFD700;
@@ -103,6 +105,7 @@ body{
   padding: 5px;
   overflow: auto;
   height: 300px;
+  position: relative;
 }
 #platinum {
   background-color: #e5e4e2;
@@ -112,6 +115,7 @@ body{
   padding: 5px;
   overflow: auto;
   height: 300px;
+  position: relative;
 }
 
 h1 {
@@ -147,4 +151,9 @@ p {
 .infoButton {
   font-size: calc(100% + 0.5vw);
   color: black;
+}
+
+.result {
+  margin: 0 auto;
+  margin-top: 80px;
 }

@@ -16,7 +16,7 @@
   "genderAssignedAtBirthOptions": ["male", "female"],
   "genderAssignedAtBirthSelection": ["female"],
   "age": 0,
-  "latitude": 0,
-  "longitude": 0,
+  "latitude": 41,
+  "longitude": 73,
   "coverage": 0
 }
