@@ -64,6 +64,7 @@ body{
   padding-top: 20px;
   margin: 0 auto;
   margin-top: 140px;
+  margin-bottom: 50px;
   text-align: center;
 }
 
@@ -133,8 +134,8 @@ p {
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
 }
 
 .searchButton {
