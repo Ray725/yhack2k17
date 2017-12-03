@@ -190,9 +190,9 @@ class FormContainer extends Component {
 		}).then(function(res) {
 			console.log(res);
 			document.querySelector(".Plans").innerHTML = JSON.stringify(formPayload);
-			return res.json;
-		}).catch(function(res) {
-			console.log(res);
+			return res.json();
+		}).then(function(data) {
+			console.log(data);
 		});
 
 		this.handleClearForm(e);
