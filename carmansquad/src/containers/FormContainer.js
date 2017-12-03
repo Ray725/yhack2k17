@@ -189,7 +189,8 @@ class FormContainer extends Component {
 		  body: JSON.stringify(formPayload)
 		}).then(function(res) {
 			console.log(res);
-			document.querySelector(".Plans").innerHTML = JSON.stringify(formPayload);
+			// document.querySelector(".Plans").innerHTML = JSON.stringify(formPayload);
+			document.querySelector(".infoButton").text = "Getting your info....";
 			return res.json();
 		}).then(function(data) {
 			console.log(data);
@@ -198,6 +199,7 @@ class FormContainer extends Component {
 			document.querySelector("#silver").innerHTML = "$" + info[1].toFixed(2);
 			document.querySelector("#gold").innerHTML = "$" + info[2].toFixed(2);
 			document.querySelector("#platinum").innerHTML = "$" + info[3].toFixed(2);
+			document.querySelector(".infoButton").text = "Finished! Click me to view your results!";
 		});
 
 		this.handleClearForm(e);
