@@ -25,7 +25,6 @@ def get_prediction():
 
     print(predict_json("autoplan-187816", "pricesv2", {'input': instance}, "v2"))
 
-
 def predict_json(project, model, instances, version=None):
     """Send json data to a deployed model for prediction.
 

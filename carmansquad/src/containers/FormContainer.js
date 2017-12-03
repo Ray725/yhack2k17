@@ -202,7 +202,7 @@ class FormContainer extends Component {
 			<form className="container" onSubmit={this.handleFormSubmit}>
 				<SingleInput
 					inputType={'text'}
-					title={'Fill out this form!'}
+					title={'Input your information!'}
 					name={'name'}
 					controlFunc={this.handleFullNameChange}
 					content={this.state.ownerName}
