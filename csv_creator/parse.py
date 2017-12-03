@@ -40,7 +40,7 @@ print("Assembling dictionaries...")
 
 for total_person in final:
     if counter % 1000 == 0:
-        print("Row {} of {}".format(counter, len(participant_detail_json)))
+        print("Row {} of {}".format(counter, len(final)))
     counter += 1
 
     person_dict = {}
