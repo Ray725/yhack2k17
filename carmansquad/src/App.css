@@ -128,10 +128,7 @@ p {
   cursor: pointer;
 }
 
-.Plans {
-  padding: 30px;
-  margin-top: 10px;
-  border: solid;
-  border-color: white;
-  border-radius: 10px;
+.infoButton {
+  font-size: 30px;
+  color: white;
 }
