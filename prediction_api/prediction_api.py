@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, Response, jsonify
 from oauth2client.client import GoogleCredentials
 from googleapiclient import discovery
 import json
@@ -6,18 +6,24 @@ import json
 app = Flask(__name__)
 
 
-@app.route ('/')
+@app.route('/')
 def hello_world():
     return 'Hello World!'
 
 
-@app.route('/get_prediction', methods=['POST'])
+@app.route('/get_prediction', methods=['POST', 'GET'])
 def get_prediction():
-    if request.method == 'POST':
-        data = request.data
-        data_dict = json.loads(data)
-        print(data_dict["input"])
+    # d = request.data
+    data_dict = json.loads(json.dumps(json.loads(request.data)))
 
+    if not data_dict:
+        return "NoData"
+
+    print(data_dict["employment"][0] is "no")
+    instance = [0 if data_dict["employment"][0] == "no" else 1, int(data_dict["peopleCovered"]), int(data_dict["annualIncome"]), 0 if data_dict["maritalSelection"][0] == "no" else 1, int(data_dict["height"]), int(data_dict["weight"]), 0 if data_dict["tobaccoSelection"][0] == "no" else 1, int(data_dict["highRiskCount"]), int(data_dict["mediumRiskCount"]), int(data_dict["lowRiskCount"]), 0 if data_dict["genderAssignedAtBirthSelection"][0] == "male" else 1, int(data_dict["age"]), int(data_dict["latitude"]), int(data_dict["longitude"])]
+    print(instance)
+
+    print(predict_json("autoplan-187816", "pricesv2", {'input': instance}, "v2"))
 
 def predict_json(project, model, instances, version=None):
     """Send json data to a deployed model for prediction.
@@ -36,20 +42,21 @@ def predict_json(project, model, instances, version=None):
     """
     # Create the ML Engine service object.
     # To authenticate set the environment variable
-    # GOOGLE_APPLICATION_CREDENTIALS=<path_to_service_account_file>
-    service = googleapiclient.discovery.build ('ml', 'v1')
-    name = 'projects/{}/models/{}'.format (project, model)
+    GOOGLE_APPLICATION_CREDENTIALS="/Users/nahumgetachew/Downloads/credentials.json"
+
+    service = discovery.build('ml', 'v1')
+    name = 'projects/{}/models/{}'.format(project, model)
 
     if version is not None:
-        name += '/versions/{}'.format (version)
+        name += '/versions/{}'.format(version)
 
-    response = service.projects ().predict (
+    response = service.projects().predict(
         name=name,
         body={'instances': instances}
     ).execute ()
 
     if 'error' in response:
-        raise RuntimeError (response['error'])
+        raise RuntimeError(response['error'])
 
     return response['predictions']
 
